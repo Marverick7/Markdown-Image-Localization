@@ -59,10 +59,13 @@ def modify_url(t_file):
 
 
 def main_method(target_dir):
+    i = 0
     files_list = get_files_list(target_dir)
     for file in files_list:
         print("正在处理：" + file)
-        return modify_url(file)
+        if modify_url(file):
+            i = i + 1
+    return len(files_list), i, len(files_list) - i
 
 
 if __name__ == '__main__':

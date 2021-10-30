@@ -45,12 +45,13 @@ class MainWindow(Ui_MainWindow, QMainWindow):
         self.target_path = self.comboBox.currentText()
         if self.target_path:
             # print(target_path)
-            if main_method(self.target_path):
-                msgWindow.label.setText("成功！")
+            total, success, fail = main_method(self.target_path)
+            if success != 0:
+                msgWindow.label.setText(f"共{total}个文件，成功{success}个，失败{fail}个")
                 msgWindow.pushButton_close.hide()
                 msgWindow.pushButton_open_dir.show()
             else:
-                msgWindow.label.setText("失败！")
+                msgWindow.label.setText("没有需要处理的文件")
                 msgWindow.pushButton_open_dir.hide()
                 msgWindow.pushButton_close.show()
             msgWindow.show()

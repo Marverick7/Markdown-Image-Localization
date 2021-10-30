@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>305</width>
-    <height>194</height>
+    <width>323</width>
+    <height>188</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -29,17 +29,20 @@
   <widget class="QLabel" name="label">
    <property name="geometry">
     <rect>
-     <x>120</x>
+     <x>20</x>
      <y>60</y>
-     <width>61</width>
+     <width>281</width>
      <height>31</height>
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">font: 20pt &quot;宋体&quot;;</string>
+    <string notr="true">font: 12pt &quot;宋体&quot;;</string>
    </property>
    <property name="text">
     <string>成功！</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
    </property>
   </widget>
   <widget class="QPushButton" name="pushButton_open_dir">

@@ -14,13 +14,14 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_Dialog(object):
     def setupUi(self, Dialog):
         Dialog.setObjectName("Dialog")
-        Dialog.resize(305, 194)
+        Dialog.resize(323, 188)
         self.pushButton_ok = QtWidgets.QPushButton(Dialog)
         self.pushButton_ok.setGeometry(QtCore.QRect(30, 130, 101, 31))
         self.pushButton_ok.setObjectName("pushButton_ok")
         self.label = QtWidgets.QLabel(Dialog)
-        self.label.setGeometry(QtCore.QRect(120, 60, 61, 31))
-        self.label.setStyleSheet("font: 20pt \"宋体\";")
+        self.label.setGeometry(QtCore.QRect(20, 60, 281, 31))
+        self.label.setStyleSheet("font: 12pt \"宋体\";")
+        self.label.setAlignment(QtCore.Qt.AlignCenter)
         self.label.setObjectName("label")
         self.pushButton_open_dir = QtWidgets.QPushButton(Dialog)
         self.pushButton_open_dir.setGeometry(QtCore.QRect(170, 130, 101, 31))
