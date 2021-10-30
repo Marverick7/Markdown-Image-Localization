@@ -19,7 +19,7 @@ def get_files_list(t_dir):
     return f_list
 
 
-def download_img(url):
+def download_img(url, file):
     img_data = requests.get(url).content
     filename = os.path.basename(file)
     dirname = os.path.dirname(file)
@@ -43,7 +43,7 @@ def modify_url(t_file):
                 i = i + 1
                 url = url[0].rstrip(")")
                 print(f"正在处理第{i}张图片")
-                img_path = download_img(url)
+                img_path = download_img(url, t_file)
                 data = data.replace(url, img_path)
         if i != 0:
             f2.write(data)
@@ -51,16 +51,22 @@ def modify_url(t_file):
     if i != 0:
         os.remove(t_file)
         os.rename(f"{t_file}.bak", t_file)
+        return True
     else:
         print("此文件没有需要处理的图片！")
         os.remove(f"{t_file}.bak")
+        return False
+
+
+def main_method(target_dir):
+    files_list = get_files_list(target_dir)
+    for file in files_list:
+        print("正在处理：" + file)
+        return modify_url(file)
 
 
 if __name__ == '__main__':
+    pass
     # 将target_dir修改为存放md文件的目录
-    target_dir = "files"
-    files_list = get_files_list(target_dir)
-
-    for file in files_list:
-        print("正在处理：" + file)
-        modify_url(file)
+    # target_dir = "files"
+    # main_method("files")
