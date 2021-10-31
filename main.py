@@ -58,14 +58,12 @@ def modify_url(file, flag):
         return False
 
 
-def main_method(target_path, flag):
+def main_method(path_list, flag):
     i = 0
-    files_list = []
-    try:
-        if os.path.isdir(target_path):
-            files_list = get_files_list(target_path)
-    except:
-        files_list = target_path
+    if os.path.isdir(path_list[0]):
+        files_list = get_files_list(path_list[0])
+    else:
+        files_list = path_list
     for file in files_list:
         print("正在处理：" + file)
         if modify_url(file, flag):
@@ -85,4 +83,11 @@ if __name__ == '__main__':
             break
         else:
             print("输入错误，请重新输入：")
-    main_method("files", backup)
+    print("请输入目标文件/文件夹路径：")
+    while True:
+        ipt2 = input()
+        if os.path.isdir(ipt2) or os.path.isfile(ipt2):
+            main_method([ipt2], backup)
+            break
+        else:
+            print("无法找到此路径，请重新输入：")
