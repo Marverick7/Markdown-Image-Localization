@@ -36,10 +36,11 @@ class MainWindow(Ui_MainWindow, QMainWindow):
         self.comboBox.addItem(dirPath)
 
     def select_single_file(self):
-        filePath, fileType = QFileDialog.getOpenFileName(self, "选择文件", "./", "*.md")
+        filePath, fileType = QFileDialog.getOpenFileNames(self, "选择文件", "./", "*.md")
         self.comboBox.clear()
-        self.comboBox.addItem(filePath)
+        self.comboBox.addItem(filePath[0])
         # print(filePath)
+        # print(fileType)
 
     def submit(self):
         self.target_path = self.comboBox.currentText()

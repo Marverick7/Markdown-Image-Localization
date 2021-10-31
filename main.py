@@ -9,15 +9,15 @@ import requests
 
 
 def get_files_list(target_dir):
-    f_list = []
+    file_list = []
     top = os.path.abspath(target_dir)
     for root, dirs, files in os.walk(top, topdown=False):
         for file_name in files:
             file_name_split = file_name.split(".")
             if file_name_split[-1] == "md":
                 md_file_path = os.path.join(root, ".".join(file_name_split))
-                f_list.append(md_file_path)
-    return f_list
+                file_list.append(md_file_path)
+    return file_list
 
 
 def download_img(url, file):
@@ -58,9 +58,14 @@ def modify_url(file, flag):
         return False
 
 
-def main_method(target_dir, flag):
+def main_method(target_path, flag):
     i = 0
-    files_list = get_files_list(target_dir)
+    files_list = []
+    try:
+        if os.path.isdir(target_path):
+            files_list = get_files_list(target_path)
+    except:
+        files_list = target_path
     for file in files_list:
         print("正在处理：" + file)
         if modify_url(file, flag):
