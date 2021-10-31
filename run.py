@@ -43,9 +43,10 @@ class MainWindow(Ui_MainWindow, QMainWindow):
 
     def submit(self):
         self.target_path = self.comboBox.currentText()
+        flag = self.checkBox.isChecked()
         if self.target_path:
             # print(target_path)
-            total, success, fail = main_method(self.target_path)
+            total, success, fail = main_method(self.target_path, flag)
             if success != 0:
                 msgWindow.label.setText(f"共{total}个文件，成功{success}个，失败{fail}个")
                 msgWindow.pushButton_close.hide()
