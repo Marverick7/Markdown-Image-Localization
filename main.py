@@ -37,12 +37,12 @@ def modify_url(file, flag):
     i = 0
     with open(file, "r", encoding="utf-8") as f1:
         data = f1.read()
-        tmp = re.findall(r"!\[.*]\(.*\)", data, re.I | re.M)
-        for url in tmp:
-            url = re.findall(r"https?://[^\s]*\)", url)
+        tmp1 = re.findall(r'!\[[^\]]*\]\((.*?)\s*("(?:.*[^"])")?\s*\)', data)
+        for tmp2 in tmp1:
+            url = re.findall(r"^http.*", tmp2[0])
             if url:
                 i = i + 1
-                url = url[0].rstrip(")")
+                url = url[0]
                 print(f"正在处理第{i}张图片")
                 img_path = download_img(url, file)
                 data = data.replace(url, img_path)
